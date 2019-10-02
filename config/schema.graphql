@@ -1,0 +1,58 @@
+type Query {
+    hello: String!
+    users: [User!]!
+    user(id: Int!): User
+    posts: [Post!]!
+    post(id: Int!): Post
+}
+
+type Mutation {
+    createUser(user: UserInput): User
+    updateUser(id: Int, user: UserInput): User
+}
+
+type User {
+    id: ID
+    name: String
+    email: String
+    address: Address
+    birthday: String
+    created_at: String
+    updated_at: String
+    posts: [Post]
+    followers: [User]
+}
+
+input UserInput {
+    name: String!
+    email: String!
+    address: AddressInput
+    birthday: String
+}
+
+type Post{
+    id: ID
+    title: String
+    content: String
+    comments: [Comment]
+}
+
+type Comment {
+    content: String
+    name: String
+    email: String
+}
+
+type Address{
+    street: String
+    postalcode: String
+    city: String
+    state: String
+}
+
+input AddressInput{
+    street: String
+    postalcode: String
+    city: String
+    state: String
+}
